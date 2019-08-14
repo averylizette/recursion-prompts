@@ -7,32 +7,203 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+
+    if (n === 0) {
+        return 1;
+    }
+
+    if (n < 0) {
+        return null;
+    }
+
+
+    return n * factorial(n-1);
+      
 };
 
-// 2. Compute the sum of an array of integers.
-// sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-};
+
+
+
+        var copy = array.slice(0)
+      
+        if (copy.length === 0) {
+      
+          return 0;
+      
+        }
+      
+        var firstElement = copy[0];
+      
+       copy.shift();
+      
+        return firstElement + sum(copy)
+        // return the first element in the array, plus the 
+        // array minus the first element
+      
+      
+        
+  
+    };
+    /*
+
+    whiteboard: 
+        is looping appropriate? or maybe n + 1 as far as accessing
+        the next one in the array
+        pop() takes off the first element in the array 
+        placeholder: 0 that increases every time
+
+        question: how to access the next element in the array. 
+        base case: if array.length = zero return zero(?)
+
+    pseudocode:
+
+        if array.length === o return 0
+        
+        placeholder= 0
+
+        var  arr = array;
+
+        var sum = 0 // i want a variable that can collect the 
+        accumulative sum to then add the next arr[0]
+
+        var summed = sum + arr[0]
+
+        arr.shift()
+
+        else if array.length > 0 {
+            return sum(arr);
+        
+
+    */
+     
+    
+    
+
+
+
+
+// function sumArr(arr) {
+//     if (arr.length === 1) {
+//       return arr[0]
+//     } else {
+//       return arr[0] + sumArr(arr.slice(1))
+//     }
+//   }
+
+
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-};
+
+    var flat = array.flat(2);
+  
+    if (flat.length === 0){
+      return 0;
+    }
+  
+    var firstElement = flat[0];
+    flat.shift()
+  
+  
+    return firstElement + arraySum(flat);
+  
+  }
 
 // 4. Check if a number is even.
+
 var isEven = function(n) {
-};
+
+    var int = Math.abs(n)
+  
+    if (int === 0) {
+      return true;
+    }
+  
+    if (int === 1) {
+      return false;
+    }
+  
+    return  isEven(int-2);
+  
+    // the number being passed in minus 2 
+  
+  };
+
+
+
+//expect(isEven(5)).to.be.a('boolean');
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-};
+
+    if (n < 0){
+
+        int = n + 1;
+      
+      }
+
+
+    var int = n-1;
+    
+    if (int === 0){
+      return 0;
+    }
+    
+    return int + sumBelow(int)
+    
+    
+     };
+     
+
+
+    
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
-var range = function(x, y) {
-};
+
+
+
+  var range = function(x, y) {
+
+    var arr = [];
+    var int = 1;
+
+
+    if (x === y) {
+        return arr;
+    }
+    
+    if (x > y) {
+        int = -1;
+    } 
+    
+    if (x === y-(int)) {
+        return arr;
+    }
+
+    return arr.concat(x + int, range(x+int, y));
+
+
+  }
+
+
+    //open a new array
+    // set a variable that can be negative or positive one
+    // set conditions to break
+    // set conditions if negative
+    // return value, concat, what do i want added to the array,
+    // what i want the new range to be
+
+
+
+
+  
+
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -40,6 +211,13 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 8. Determine if a number is a power of two.
@@ -47,14 +225,79 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+     /*
+
+    whiteboard:
+
+        concat() - Joins two or more strings, and returns a new joined strings
+        slice()	Extracts a part of a string and returns a new string
+        split()	Splits a string into an array of substrings
+        substr()	Extracts the characters from a string, beginning at a 
+        specified start position, and through the specified number of character
+
+        str.split
+        str[str.length]
+    
+    pseudocode:
+
+    */
+
+    
+    if (string.length === 0 ) {
+        return string;
+    }
+
+    var arr = string.split("");
+    
+    var rString = arr[string.length-1];
+    
+    return rString + reverse(string.slice(0, string.length-1))
+
+    
+
+
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+
+    //hannah 
+
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
+
+    if (string.length === 0) {
+        return true;
+    }
+
+    if (string[0] === string[string.length-1]){
+       var arr = string.split("");
+       arr.shift();
+       arr.pop();
+       string = arr.join("");
+    }
+    else {
+        return false;
+    }
+
+    return palindrome(string);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -63,16 +306,50 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
+
+
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
+   
+
+    if (x === (x * y) ){
+        return x;
+    };
+
+
+
+    return x + (multiply(x, y))
+
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods to arrive at an approximate quotient (ignore decimal endings).
 var divide = function(x, y) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
@@ -81,6 +358,13 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 15. Write a function that compares each character of two strings and returns true if
@@ -88,21 +372,49 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function(array) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 19. Implement FizzBuzz. Given integer n, return an array of the string representations of 1 to n.
@@ -111,6 +423,13 @@ var buildList = function(value, length) {
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
 var fizzBuzz = function(n) {
+     /*
+
+    whiteboard:
+    
+    pseudocode:
+
+    */
 };
 
 // 20. Count the occurence of a value in a list.
